@@ -5,7 +5,7 @@ $word = New-Object -ComObject Word.Application
 $word.Visible = $false
 
 # Define the folder path (replace 'C:\your\folder\path' with your actual path)
-$folderPath = "D:\data\processed_pdf"
+$folderPath = "D:\data\pdf"
 
 # Get all PDF files in the folder
 $pdfFiles = Get-ChildItem -Path $folderPath -Filter *.pdf
