@@ -17,7 +17,7 @@ foreach ($documentPath in $pdfFiles) {
 	$filePathWithoutExt = $documentPath.FullName.Substring(0, $documentPath.FullName.LastIndexOf('.'))
 
 	# Create the new HTML file path (append .html extension)
-	$pdfFolder = "processed_pdf"
+	$pdfFolder = "pdf"
 	$docFolder = "word"
 	$markdownFolder = "md"
 	$attachmentFolder = "md\attachments"
