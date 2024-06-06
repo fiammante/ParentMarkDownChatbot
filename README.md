@@ -6,3 +6,6 @@ ParentDocumentRetriever uses a chain of splitters to avoid having too small chun
 
 Replace the paths in the powershell script and notebook by your path.
 The script should be executed first to create the markdown files from pdfs
+
+Once the Chroma and VectorStore are loaded with documents the streamlit chatbotparentchild.py can be used by using the command "streamlit run chatbotparentchild.py"
+![image](files:chatbotscreenshot.png)
