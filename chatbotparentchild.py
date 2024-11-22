@@ -16,6 +16,7 @@ from langchain.storage._lc_store import create_kv_docstore
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.storage import LocalFileStore
 from langchain.retrievers import ParentDocumentRetriever
+import platform
 
 load_dotenv()
 # app config
@@ -41,12 +42,16 @@ ollama_ef = OllamaEmbeddings(
     model="all-minilm"
 )
 
+path_prefix = "/mnt/d/"
+if platform.system() == "Darwin":
+    path_prefix = "/tmp/"
+
 # MD splits
 parent_splitter = MarkdownTextSplitter(chunk_size=5000,chunk_overlap = 200)
 child_splitter = MarkdownTextSplitter(chunk_size=500,chunk_overlap = 60)
-vectorstore = Chroma(persist_directory="/mnt/d/data/HIE", embedding_function=ollama_ef)
+vectorstore = Chroma(persist_directory=path_prefix + "data/HIE", embedding_function=ollama_ef)
 # Instantiate the LocalFileStore with the root path
-fs = LocalFileStore("/mnt/d/data/documentstore")
+fs = LocalFileStore(path_prefix + "data/documentstore")
 store = create_kv_docstore(fs)
 llm = Ollama(model="wizardlm2", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),num_ctx=4096,verbose=True)
 
