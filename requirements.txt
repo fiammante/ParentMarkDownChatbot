@@ -1,0 +1,4 @@
+langchain_community
+langchain
+python-dotenv
+chromadb
